@@ -1,20 +1,25 @@
+// TaskList.js
+
 import React from 'react';
 import { connect } from 'react-redux';
 
-const TaskList = ({ tasks }) => {
-    return (
-        <ul>
-            {tasks.tasks.map(task => (
-                <li key={task.id}>{task.title}</li>
-            ))}
-        </ul>
-    )
-}
+const TaskList = ({ taskList }) => {
+  return (
+    <div>
+      <h2>Task List</h2>
+      <ul>
+        {taskList.tasks.map(task => (
+          <li key={task.id}>{task.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
-    return {
-        tasks: state.tasks
-    }
-}
+  return {
+    taskList: state.tasks // Assuming 'tasks' is the correct key for the tasks slice of the Redux state
+  };
+};
 
 export default connect(mapStateToProps)(TaskList);
